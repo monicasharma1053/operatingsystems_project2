@@ -1,0 +1,12 @@
+to make the client: 
+make client 
+
+
+run code: 
+./chat1 -p 7400 
+
+run chat code other instances on same machiene: 
+./chat1 -p 7400 localhost
+
+
+
