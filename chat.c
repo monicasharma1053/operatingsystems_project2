@@ -20,11 +20,11 @@
 
 
 //call to exit the system 
-void exit(int fd, fd_set *readfds, char fd_array[], int *num_clients){
+void exitSystem(int fd, fd_set *readfds, char fd_array[], int *num_clients){
     int i;
     
     close(fd);
-    FD_CLR(fd, readfds); //clear the leaving client from the set
+    FD_CLR(fd, readfds); //clear the leaving client
     for (i = 0; i < (*num_clients) - 1; i++)
         if (fd_array[i] == fd)
             break;          
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 
    //Client
 
-   if(argc==2 || argc==4){
+    if(argc==2 || argc==4){
      if(!strcmp("-p",argv[1])){
        if(argc==2){
          printf("Invalid parameters.\nUsage: chat [-p PORT] HOSTNAME\n");
@@ -237,13 +237,13 @@ int main(int argc, char *argv[]) {
                     
                      //Exit Client
                     if(msg[0] == 'X'){
-                       exit(fd,&readfds, fd_array,&num_clients);
+                       exitSystem(fd,&readfds, fd_array,&num_clients);
                     }   
                  }                                   
               }
               //leaving client                  
               else { 
-                 exit(fd,&readfds, fd_array,&num_clients);
+                 exitSystem(fd,&readfds, fd_array,&num_clients);
               }
            }
         }

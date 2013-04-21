@@ -1,12 +1,15 @@
 to make the client: 
-make client 
+
+make all 
 
 
 run code: 
-./chat1 -p 7400 
+./chat1 -p 7000 
 
 run chat code other instances on same machiene: 
-./chat1 -p 7400 localhost
+./chat1 -p 7000 localhost
+
+enter 'quit' to exit
 
 
 
